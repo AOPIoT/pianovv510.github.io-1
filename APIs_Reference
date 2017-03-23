@@ -10,12 +10,12 @@ Parameters
 
 	Initial pin: setup the mode for pin
 	["resetPin"]  //prefix
-	["setPinMode", “analog”, <0~5>, “INPUT”]
-	["setPinMode", “digital”, <0~13>, “OUTPUT”]
-	["setPinMode", “digital”, <0~13>, “INPUT”]
-	[“setPinMode”, “digital”, <0~13>, “SERVO”]
-	[“setPinMode”, “digital”, <0~13>, “TONE”]
-	[“grove_newChainableLED”, 7, 8, <num of leds>]
+	["setPinMode", "analog", <0~5>, "INPUT"]
+	["setPinMode", "digital", <0~13>, "OUTPUT"]
+	["setPinMode", "digital", <0~13>, "INPUT"]
+	["setPinMode", "digital", <0~13>, "SERVO"]
+	["setPinMode", "digital", <0~13>, "TONE"]
+	["grove_newChainableLED", 7, 8, <num of leds>]
 
 	Command:
 	[“digitalWrite”, <0~13>, <0 or 1>]
