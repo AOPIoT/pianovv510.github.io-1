@@ -80,6 +80,7 @@
 		
 		if(cpf){
 			cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
+			cpf.request ('\"digitalWrite\", 2, 1');
 		}
 		
 	}
