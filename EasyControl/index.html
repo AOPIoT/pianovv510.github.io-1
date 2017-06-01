@@ -61,7 +61,11 @@
 	 		document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			var randomtmp = Math.floor((Math.random() * 2));
-			cpf.request ('["digitalWrite", 2,1]');
+			cpf.request ('["digitalWrite", 11,180]');
+			cpf.request ('["digitalWrite", 12,180]');
+			cpf.sleep(2000);
+			cpf.request ('["digitalWrite", 11,0]');
+			cpf.request ('["digitalWrite", 12,0]');
 		}
 		setTimeout("loop()", 1000);
 	}
@@ -98,7 +102,7 @@
 	function setup(){
 		if(cpf)
 			//var ret = cpf.request('[\"resetPin\"],[\"setPinMode\", \"analog\", 0, \"INPUT\"],[\"setPinMode\", \"analog\", 1,\"INPUT\"],[\"setPinMode\", \"digital\", 2,\"OUTPUT\"],[\"grove_newChainableLED\", 7, 8, 1]');
-			var ret = cpf.request('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["setPinMode", "digital", 2,"OUTPUT"],["grove_newChainableLED", 7, 8, 1]'); 
+			var ret = cpf.request('["resetPin"],["setPinMode", "digital", 11, "SERVO"],["setPinMode", "digital", 12, "SERVO"]'); 
 			//document.getElementById("demo").innerHTML += ret + "<br>";
 	}
 	
