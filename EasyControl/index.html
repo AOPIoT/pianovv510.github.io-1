@@ -61,10 +61,10 @@
 	 		document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			var randomtmp = Math.floor((Math.random() * 2));
-			cpf.request ('["digitalWrite", 11,180]');
+			cpf.request ('["digitalWrite", 6,180]');
 			cpf.request ('["digitalWrite", 12,180]');
 			cpf.sleep(2000);
-			cpf.request ('["digitalWrite", 11,0]');
+			cpf.request ('["digitalWrite", 6,0]');
 			cpf.request ('["digitalWrite", 12,0]');
 		}
 		setTimeout("loop()", 1000);
