@@ -61,11 +61,11 @@
 	 		document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			var randomtmp = Math.floor((Math.random() * 2));
-			cpf.request ('["digitalWrite", 6,180]');
-			cpf.request ('["digitalWrite", 12,180]');
+			 cpf.request('["servo_pos_speed", 4, 60, 30]');
+			 cpf.request('["servo_pos_speed", 7, 60, 30]');
 			cpf.sleep(2000);
-			cpf.request ('["digitalWrite", 6,0]');
-			cpf.request ('["digitalWrite", 12,0]');
+			cpf.request('["servo_pos_speed", 4, 180, 30]');
+			cpf.request('["servo_pos_speed", 7, 180, 30]');
 		}
 		setTimeout("loop()", 1000);
 	}
@@ -102,7 +102,7 @@
 	function setup(){
 		if(cpf)
 			//var ret = cpf.request('[\"resetPin\"],[\"setPinMode\", \"analog\", 0, \"INPUT\"],[\"setPinMode\", \"analog\", 1,\"INPUT\"],[\"setPinMode\", \"digital\", 2,\"OUTPUT\"],[\"grove_newChainableLED\", 7, 8, 1]');
-			var ret = cpf.request('["resetPin"],["setPinMode","digital", 6, "PWM"],["setPinMode", "digital", 12, "SERVO"]'); 
+			var ret = cpf.request('["resetPin"],["servo_init",4,90,900,2100],["servo_init",7,90,900,2100]'); 
 			//document.getElementById("demo").innerHTML += ret + "<br>";
 	}
 	
