@@ -102,7 +102,7 @@
 	function setup(){
 		if(cpf)
 			//var ret = cpf.request('[\"resetPin\"],[\"setPinMode\", \"analog\", 0, \"INPUT\"],[\"setPinMode\", \"analog\", 1,\"INPUT\"],[\"setPinMode\", \"digital\", 2,\"OUTPUT\"],[\"grove_newChainableLED\", 7, 8, 1]');
-			var ret = cpf.request('["resetPin"],["setPinMode", 6, "PWM"],["setPinMode", "digital", 12, "SERVO"]'); 
+			var ret = cpf.request('["resetPin"],["setPinMode","digital", 6, "PWM"],["setPinMode", "digital", 12, "SERVO"]'); 
 			//document.getElementById("demo").innerHTML += ret + "<br>";
 	}
 	
