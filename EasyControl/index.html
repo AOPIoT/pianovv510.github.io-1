@@ -63,14 +63,14 @@
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			var randomtmp = Math.floor((Math.random() * 2));
 			
-			var ret2 = cpf.request('["servo_pos", 2, 60],["servo_pos", 3, 60]'); //two servos run at the same time
+			var ret2 = cpf.request('["servo_pos", 2, 80]'); //two servos run at the same time
 			//cpf.request('["servo_pos", 2, 60, 30]'); //run separately
 		 	//cpf.request('["servo_pos", 3, 60, 30]');
 			document.getElementById("result2").innerHTML = "request result:" + ret2;
-			cpf.sleep(300);
+			cpf.sleep(30000);
 			
-			cpf.request('["servo_pos", 2, 180],["servo_pos", 3, 180]');
-			//cpf.request('["servo_pos", 2, 180, 30]');
+			//cpf.request('["servo_pos", 2, 180],["servo_pos", 3, 180]');
+			cpf.request('["servo_pos", 2, 90]');
 			//cpf.request('["servo_pos", 3, 180, 30]');
 	
 		}
@@ -109,7 +109,7 @@
 	function setup(){
 		if(cpf)
 			//var ret = cpf.request('[\"resetPin\"],[\"setPinMode\", \"analog\", 0, \"INPUT\"],[\"setPinMode\", \"analog\", 1,\"INPUT\"],[\"setPinMode\", \"digital\", 2,\"OUTPUT\"],[\"grove_newChainableLED\", 7, 8, 1]');
-			var ret = cpf.setPinMode('["resetPin"],["servo_init",2,90,500,2400],["servo_init",3,90,500,2400]'); //for SG90
+			var ret = cpf.setPinMode('["resetPin"],["servo_init",2,90,900,2100],["servo_init",3,90,500,2400]'); //for SG90
 			document.getElementById("result").innerHTML += ret + "<br>";
 	}
 	
