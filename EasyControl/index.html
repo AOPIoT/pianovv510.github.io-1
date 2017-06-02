@@ -61,11 +61,21 @@
 	 		document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			var randomtmp = Math.floor((Math.random() * 2));
+			 cpf.request('["servo_pos_speed", 2, 60, 30]');
+			 cpf.request('["servo_pos_speed", 3, 60, 30]');
 			 cpf.request('["servo_pos_speed", 4, 60, 30]');
-			 cpf.request('["servo_pos_speed", 12, 60, 30]');
+			 cpf.request('["servo_pos_speed", 5, 60, 30]');
+			 cpf.request('["servo_pos_speed", 6, 60, 30]');
+			 cpf.request('["servo_pos_speed", 7, 60, 30]');
+			 cpf.request('["servo_pos_speed", 8, 60, 30]');
 			cpf.sleep(2000);
+			cpf.request('["servo_pos_speed", 2, 180, 30]');
+			cpf.request('["servo_pos_speed", 3, 180, 30]');
 			cpf.request('["servo_pos_speed", 4, 180, 30]');
-			cpf.request('["servo_pos_speed", 12, 180, 30]');
+			cpf.request('["servo_pos_speed", 5, 180, 30]');
+			cpf.request('["servo_pos_speed", 6, 180, 30]');
+			cpf.request('["servo_pos_speed", 7, 180, 30]');
+			cpf.request('["servo_pos_speed", 8, 180, 30]');
 		}
 		setTimeout("loop()", 1000);
 	}
@@ -102,7 +112,7 @@
 	function setup(){
 		if(cpf)
 			//var ret = cpf.request('[\"resetPin\"],[\"setPinMode\", \"analog\", 0, \"INPUT\"],[\"setPinMode\", \"analog\", 1,\"INPUT\"],[\"setPinMode\", \"digital\", 2,\"OUTPUT\"],[\"grove_newChainableLED\", 7, 8, 1]');
-			var ret = cpf.setPinMode('["resetPin"],["servo_init",4,90,900,2100],["servo_init",12,90,900,2100]'); 
+			var ret = cpf.setPinMode('["resetPin"],["servo_init",2,90,900,2100],["servo_init",3,90,900,2100],["servo_init",4,90,900,2100],["servo_init",5,90,900,2100],["servo_init",6,90,900,2100],["servo_init",7,90,900,2100],["servo_init",8,90,900,2100]'); 
 			//document.getElementById("demo").innerHTML += ret + "<br>";
 	}
 	
