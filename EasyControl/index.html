@@ -61,11 +61,11 @@
 	 		document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			var randomtmp = Math.floor((Math.random() * 2));
-			 cpf.request('["servo_pos_speed", 2, 60, 30],["servo_pos_speed", 3, 60, 30]');
+			 cpf.request('["servo_pos", 2, 60],["servo_pos", 3, 60]');
 			 //cpf.request('["servo_pos_speed", 3, 60, 30]');
 		
 			cpf.sleep(300);
-			cpf.request('["servo_pos_speed", 2, 180, 30],["servo_pos_speed", 3, 180, 30]');
+			cpf.request('["servo_pos", 2, 180],["servo_pos", 3, 180]');
 			//cpf.request('["servo_pos_speed", 3, 180, 30]');
 	
 		}
