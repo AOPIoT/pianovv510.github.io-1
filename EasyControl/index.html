@@ -6,7 +6,7 @@
 </head>
 <body>
 <p id="result">Init result:</p><p id="result2"></p>
-<font id="title">Easy Control3</font><p><br>
+<font id="title">Easy Control4</font><p><br>
 
 <div id="content">
 
@@ -67,12 +67,12 @@
 			//cpf.request('["servo_pos", 2, 60, 30]'); //run separately
 		 	//cpf.request('["servo_pos", 3, 60, 30]');
 			document.getElementById("result2").innerHTML = "request result:" + ret2;
-			cpf.sleep(15000);
+			cpf.sleep(10000);
 			
 			//cpf.request('["servo_pos", 2, 180],["servo_pos", 3, 180]');
 			cpf.request('["servo_pos", 2, 90]');
 			//cpf.request('["servo_pos", 3, 180, 30]');
-	cpf.sleep(3000);
+	cpf.sleep(10000);
 		}
 		setTimeout("loop()", 1000);
 	}
