@@ -62,7 +62,7 @@
 	 		document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			var randomtmp = Math.floor((Math.random() * 2));
-			
+			cpf.request('["tone_play", 9, 255, 300]');
 			var ret2 = cpf.request('["servo_pos", 2, 180]'); //two servos run at the same time
 			//cpf.request('["servo_pos", 2, 60, 30]'); //run separately
 		 	//cpf.request('["servo_pos", 3, 60, 30]');
@@ -109,7 +109,7 @@
 	function setup(){
 		if(cpf)
 			//var ret = cpf.request('[\"resetPin\"],[\"setPinMode\", \"analog\", 0, \"INPUT\"],[\"setPinMode\", \"analog\", 1,\"INPUT\"],[\"setPinMode\", \"digital\", 2,\"OUTPUT\"],[\"grove_newChainableLED\", 7, 8, 1]');
-			var ret = cpf.setPinMode('["resetPin"],["servo_init",2,90,900,2100],["servo_init",3,90,500,2400]'); //for SG90
+			var ret = cpf.setPinMode('["resetPin"],["setPinMode,"digital",9, "TONE"],["servo_init",2,90,900,2100],["servo_init",3,90,500,2400]'); //for SG90
 			document.getElementById("result").innerHTML += ret + "<br>";
 	}
 	
