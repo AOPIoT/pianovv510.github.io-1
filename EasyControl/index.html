@@ -62,7 +62,7 @@
 	 		document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			var randomtmp = Math.floor((Math.random() * 2));
-			cpf.request('["tone_play", 8, 255, 300]');
+			cpf.request('["tone_play", 8, 255, 300],'["tone_play", 8, 440, 300]');
 			//var ret2 = cpf.request('["servo_pos", 2, 180]'); //two servos run at the same time
 			//cpf.request('["servo_pos", 2, 60, 30]'); //run separately
 		 	//cpf.request('["servo_pos", 3, 60, 30]');
