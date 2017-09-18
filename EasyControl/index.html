@@ -115,7 +115,7 @@
 	// cpf setup
 	function setup(){
 		if(cpf)
-			var ret = cpf.setPinMode('["resetPin"],["setPinMode", "analog", 1, "INPUT"],["setPinMode", "analog", 2, "INPUT"],["setPinMode", "analog", 1, "INPUT"], ["grove_newChainableLED",7,8,1]');
+			var ret = cpf.setPinMode('["resetPin"],["setPinMode", "analog", 1, "INPUT"],["setPinMode", "analog", 2, "INPUT"],["setPinMode", "digital",2, "INPUT"],["setPinMode", "digital",2, "INPUT"],["setPinMode", "digital",4, "OUTPUT"] ,["grove_newChainableLED",7,8,1]');
 			//var ret = cpf.request('[\"resetPin\"],[\"setPinMode\", \"analog\", 0, \"INPUT\"],[\"setPinMode\", \"analog\", 1,\"INPUT\"],[\"setPinMode\", \"digital\", 2,\"OUTPUT\"],[\"grove_newChainableLED\", 7, 8, 1]');
 			//var ret = cpf.setPinMode('["resetPin"],["setPinMode","digital",6, "TONE"],["servo_init",2,90,900,2100],["servo_init",3,90,500,2400]'); //for SG90
 			
