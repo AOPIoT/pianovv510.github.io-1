@@ -47,12 +47,18 @@
     <p id='print'>
   </body>
   <script>
+    setup();
+    function setup(){
+		if(cpf)
+			var ret = cpf.setPinMode(' ["resetPin"],["setPinMode", "digital", 3, "PWM"]'); 
+			//document.getElementById("demo").innerHTML += ret + "<br>";
+	}
     function ctrlSpeed(){
 
       var speed=document.getElementById('ran1').value
       var connect=document.getElementById('che1').checked
       if(connect){
-        var ret = cpf.request(' ["resetPin"],["setPinMode", "digital", 3, "PWM"]')
+     //   var ret = cpf.request(' ["resetPin"],["setPinMode", "digital", 3, "PWM"]')
         cpf.set("fan", speed);
 //         cpf.set("fan", 255);
       }
