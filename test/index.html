@@ -1,1 +1,62 @@
+<html>
+  <head>
+    <title>
+      ChiGiStudio
+    </title>
+    <meta charset="UTF-8">
+    <style>
+      input[type=range] {
+        -webkit-appearance: none;
+        width: 400px;
+        height: 30px;
+      }
+      input[type=range]:focus {
+        outline: none;
+      }
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 10px;
+        cursor: pointer;
+        animate: 0.2s;
+        box-shadow: 1px 1px 1px #000000;
+        background: #ff0000;
+        border-radius: 5px;
+        border: 1px solid #000000;
+      }
+      input[type=range]::-webkit-slider-thumb {
+        box-shadow: 1px 1px 1px #000000;
+        border: 1px solid #000000;
+        height: 30px;
+        width: 15px;
+        border-radius: 5px;
+        background: #FFFFFF;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -11px;
+      }
+    </style>
+  </head>
+  <body>
+    <input id='che1' type='checkbox'>connect CPF</input>
+    <center>
+    <input id='btn1' type='image' width=500 height=500 src='fan.png'></input>
+    <br>
+    <input id='ran1' type='range' width=400px min='0' max='255' onchange='ctrlSpeed()' value="50"></input>
+    <p id='print'>
+    </center>
+    <p id='print'>
+  </body>
+  <script>
+    function ctrlSpeed(){
 
+      var speed=document.getElementById('ran1').value
+      var connect=document.getElementById('che1').checked
+      if(connect){
+        var ret = cpf.request(' ["resetPin"],["setPinMode", "digital", 3, "PWM"]')
+        cpf.set("fan", speed);
+//         cpf.set("fan", 255);
+      }
+      document.getElementById('print').innerHTML=speed
+    }
+  </script>
+</html>
