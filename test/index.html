@@ -61,13 +61,7 @@
      var speed = document.getElementById('ran1');
     //  if(connect){
       //   var ret = cpf.request(' ["resetPin"],["setPinMode", "digital", 3, "PWM"]')
-      // cpf.set("fan", speed.value);
-      cpf.set("D2", 1); 
-       cpf.sleep(1000);
-	    cpf.set("D2", 0);
-	    cpf.sleep(1000);
-	    cpf.set("D2", 1);
-	     cpf.set("D2", 0);
+      cpf.set("fan", speed.value);
    //   }
       document.getElementById('print').innerHTML=speed ;
     }
