@@ -55,14 +55,21 @@
 	}
     function ctrlSpeed(){
       
-      var speed = document.getElementById('ran1').value;
+      //var speed = document.getElementById('ran1').value;
       var connect = document.getElementById('che1').checked;
+	  var speed=    document.getElementById(ran1);
      // if(connect){
      //   var ret = cpf.request(' ["resetPin"],["setPinMode", "digital", 3, "PWM"]')
        cpf.set("fan", 200);
 //         cpf.set("fan", 255);
      // }
       document.getElementById('print').innerHTML=speed;
+    }
+	  
+  function printValue(sliderID ) {
+        var x = document.getElementById(textbox);
+        var y = document.getElementById(sliderID);
+        x.value = y.value;
     }
   </script>
 </html>
