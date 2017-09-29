@@ -42,7 +42,7 @@
     <input id='btn1' type='image' width=500 height=500 src='fan.png'></input>
     <br>
     
-    <input id='ran1' type='range' width=400px min='0' max='255' onchange='ctrlSpeed()' value="50"></input>
+    <input id='ran1' type='range' width=400px min='0' max='255' onchange='ctrlSpeed()' value="50">1</input>
     <p id='print'>
     </center>
     <p id='print'>
@@ -50,14 +50,17 @@
   <script>
     setup();
     function setup(){
+	        var connect = document.getElementById('che1').checked;
 		if(cpf)
 			var ret = cpf.setPinMode('["resetPin"],["setPinMode", "digital", 3, "PWM"]',["setPinMode", "digital", 2, "OUTPUT"]); 
 			//document.getElementById("demo").innerHTML += ret + "<br>";
-	}
+                if(ret == 200)
+			 connect.checked = true
+    }
     function ctrlSpeed(){
       
  
-     var connect = document.getElementById('che1').checked;
+     //var connect = document.getElementById('che1').checked;
      var speed = document.getElementById('ran1');
     //  if(connect){
       //   var ret = cpf.request(' ["resetPin"],["setPinMode", "digital", 3, "PWM"]')
