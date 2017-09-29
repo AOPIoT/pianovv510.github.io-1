@@ -1,61 +1,107 @@
-<html>
-  <head>
-    <title>
-      ChiGiStudio
-    </title>
-    <meta charset="UTF-8">
-    <style>
-      input[type=range] {
-        -webkit-appearance: none;
-        width: 400px;
-        height: 30px;
-      }
-      input[type=range]:focus {
-        outline: none;
-      }
-      input[type=range]::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 10px;
-        cursor: pointer;
-        animate: 0.2s;
-        box-shadow: 1px 1px 1px #000000;
-        background: #ff0000;
-        border-radius: 5px;
-        border: 1px solid #000000;
-      }
-      input[type=range]::-webkit-slider-thumb {
-        box-shadow: 1px 1px 1px #000000;
-        border: 1px solid #000000;
-        height: 30px;
-        width: 15px;
-        border-radius: 5px;
-        background: #FFFFFF;
-        cursor: pointer;
-        -webkit-appearance: none;
-        margin-top: -11px;
-      }
-    </style>
-  </head>
-  <body>
-    <input id='che1' type='checkbox'>connect CPF</input>
-    <center>
-    <input id='btn1' type='image' width=500 height=500 src='fan.png'></input>
-    <br>
-    <input id='ran1' type='range' width=400px min='0' max='255' onchange='ctrlSpeed()' value="50"></input>
-    <p id='print'>
-    </center>
-    <p id='print'>
-  </body>
-  <script>
-    function ctrlSpeed(){
-      var speed=document.getElementById('ran1').value
-      var connect=document.getElementById('che1').checked
-      if(connect){
-        var ret = cpf.request(' ["resetPin"],["setPinMode", "digital", 3, "PWM"]')
-        cpf.set("fan", speed);
-//         cpf.set("fan", 255);
-      }
-      document.getElementById('print').innerHTML=speed
-    }
-  </script>
+<!DOCTYPE html>
+<head>
+<title>Easy Control</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+<font id="title">Easy Control</font><p><br>
+
+<div id="content" class="row">
+	<div class="col-sm-12  col-xs-12">
+		<div id="analog" class="col-sm-6 col-xs-12">
+			<div class="analogclass">
+				<img class="analogsensor" src="img/light.png" />
+				<span class="analogvalue" id="lightvalue">none</span><br>
+			</div>
+			<p>
+			<div class="analogclass">
+				<img class="analogsensor" src="img/temp.png" />
+				<span class="analogvalue" id="temperaturevalue">none</span>
+			</div>
+		</div>
+		<div id="rgb" class="col-sm-6 col-xs-12">
+			<img class="rgbled" src="img/rgb.png" />
+			<table style="margin: 0 auto; margin-top: 10px;">
+				<tr style="text-align: center;">
+					<td><font color="red"><b>Red</b></font></td>
+					<td><font color="green"><b>green</b></font></td>
+					<td><font color="blue"><b>blue</b></font></td>
+				</tr>
+				<tr style="text-align: center;">
+					<td id="redvalue">0</td>
+					<td id="greenvalue">0</td>
+					<td id="bluevalue">0</td>
+				</tr>
+				<tr>
+					<td><input Onchange="changeColor();" type="range" id="rled" class="ledbar" value="0" min="0" max="255"></td>
+					<td><input Onchange="changeColor();" type="range" id="gled" class="ledbar" value="0" min="0" max="255"></td>
+					<td><input Onchange="changeColor();" type="range" id="bled" class="ledbar" value="0" min="0" max="255"></td>
+				</tr>
+			</table>
+			<span id="showcolor"></span>
+		</div>
+	</div>
+</div>
+
+<script>
+	
+	var lightdata;
+	var tempdata;
+	var celsius;
+	setup();
+	// Analog
+	function loop() {
+		if(cpf){
+	
+			lightdata = cpf.get("light sensor");
+			tempdata = cpf.get("temperature sensor");
+			celsius = toCelsius(tempdata);	
+			document.getElementById("lightvalue").innerHTML = ret;
+			document.getElementById("temperaturevalue").innerHTML = celsius;
+			
+		}
+		setTimeout("loop()", 1000);
+	}
+	loop();
+	
+	// RGB
+	function changeColor() {
+		var Rled = document.getElementById("rled").value;
+		var Gled = document.getElementById("gled").value;
+		var Bled = document.getElementById("bled").value;
+		
+		document.getElementById("redvalue").innerHTML = Rled;
+		document.getElementById("greenvalue").innerHTML = Gled;
+		document.getElementById("bluevalue").innerHTML = Bled;
+		
+		document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
+		
+		if(cpf){
+      cpf.set("fan", 200);
+			cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
+		}
+		
+	}
+	
+	// Temperature
+	function toCelsius(value) {
+		var resistance = parseFloat((1023-value) * 10000 / value);
+		var temperature = 1 / (Math.log(resistance / 10000) / 3975+1 / 298.15) - 273.15;
+		
+		return temperature.toFixed(2);
+	}
+	
+	// cpf setup
+	function setup(){
+		if(cpf)
+			var ret = cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "digital", 3,"PWM"],["grove_newChainableLED", 7, 8, 1]'); 
+			//document.getElementById("demo").innerHTML += ret + "<br>";
+	}
+	
+</script>
+</body>
 </html>
