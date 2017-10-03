@@ -63,6 +63,8 @@
 			document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = ret2;
 			
+			
+			
 		}
 		setTimeout("loop()", 1000);
 	}
@@ -73,7 +75,7 @@
 		var Rled = document.getElementById("rled").value;
 		var Gled = document.getElementById("gled").value;
 		var Bled = document.getElementById("bled").value;
-		
+		cpf.request('["resetPin"],["grove_rgblcd_set_rgb", 255, 0, 255]'); 
 		document.getElementById("redvalue").innerHTML = Rled;
 		document.getElementById("greenvalue").innerHTML = Gled;
 		document.getElementById("bluevalue").innerHTML = Bled;
@@ -98,7 +100,10 @@
 	// cpf setup
 	function setup(){
 		if(cpf)
-			var ret = cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "digital", 3,"PWM"],["grove_newChainableLED", 7, 8, 1]'); 
+			//var ret = cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "digital", 3,"PWM"],["grove_newChainableLED", 7, 8, 1]'); 
+			var ret = cpf.setPinMode('["resetPin"],["grove_rgblcd_begin", 16, 2]'); 
+			
+
 			//document.getElementById("demo").innerHTML += ret + "<br>";
 	}
 	
